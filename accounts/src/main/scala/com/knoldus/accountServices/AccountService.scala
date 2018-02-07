@@ -20,19 +20,16 @@ class AccountService extends AccountApi{
     * @return - true if valid user else false
     */
   def authenticate(userDb: Map[Int, User], username: String, password: String, userId: Int): Boolean = {
-    Option(userDb.get(userId)) match {
-      case Some(value) => if (value.get.username == username && value.get.password == password) true else false
-      case None => false
+    userDb.get(userId) match {
+      case value => if (value.get.username.equals(username) && value.get.password.equals(password)) true else false
     }
   }
 
   /**
     * @param userDb - User records
     */
-  def viewAllUsers(userDb: Map[Int, User]): Unit = {
-    userDb.foreach {
-      case (id, user) => print(s"\n$id \t ${user.firstName} \t ${user.lastName} \t ${user.phone}")
-    }
+  def viewAllUsers(userDb: Map[Int, User]): List[(Int, User)] = {
+    userDb.toList
   }
 
 }

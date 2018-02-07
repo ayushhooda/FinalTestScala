@@ -36,6 +36,14 @@ class InventoryServiceTest extends FunSuite {
         (1, Products("TV", "LCD", "Entertainment", 20000)))
     }
   }
+
+  test("Method should return List of all inventory") {
+    assert {
+      obj.viewInventory(Map(1 -> Products("TV", "LCD", "Entertainment", 20000),
+        2 -> Products("A/C", "Window", "Luxury", 15000))) ==
+      List((1, Products("TV", "LCD", "Entertainment", 20000)), (2, Products("A/C", "Window", "Luxury", 15000)))
+    }
+  }
   //scalastyle:on
 
 }
