@@ -6,6 +6,6 @@ trait AccountApi {
 
   def authenticate(userDb: Map[Int, User], username: String, password: String, userId: Int): Boolean
 
-  def viewAllUsers(userDb: Map[Int, User]): Unit
+  def viewAllUsers(userDb: Map[Int, User]): List[(Int, User)]
 
 }

@@ -14,11 +14,10 @@ class InventoryService extends InventoryApi {
 
   /**
     * @param productDb - map containing all products
+    * @return - list of all inventory
     */
-  def viewInventory(productDb: Map[Int, Products]): Unit = {
-    productDb.foreach {
-      case (id, product) => print(s"\n$id \t ${product.productName} \t ${product.productPrice} \t ${product.productDescription}")
-    }
+  def viewInventory(productDb: Map[Int, Products]): List[(Int, Products)] = {
+    productDb.toList
   }
 
   /**
